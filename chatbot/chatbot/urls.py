@@ -16,7 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.http import HttpResponse
+from backend import views as backend_views
+from frontend import views as frontend_views
+
+"""urlpatterns = [
+    path('admin/', admin.site.urls),
+]"""
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("", frontend_views.frontend),
+    path("server/", backend_views.backend),
+    path("server/get_first_message", backend_views.get_first_message),
+    path("server/get_chat_response", backend_views.get_chat_response)
 ]
+
